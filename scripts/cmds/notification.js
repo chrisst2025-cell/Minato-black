@@ -1,3 +1,5 @@
+"use strict";
+
 const { getStreamsFromAttachment } = global.utils;
 
 module.exports = {
@@ -5,24 +7,24 @@ module.exports = {
 		name: "notification",
 		aliases: ["notify", "noti", "broadcast"],
 		version: "2.0.0",
-		author: "SIFAT",
+		author: "Chris",
 		countDown: 5,
 		role: 2,
-		description: { en: "ʙʀᴏᴀᴅᴄᴀꜱᴛ ᴀᴅᴍɪɴ ɴᴏᴛɪꜰɪᴄᴀᴛɪᴏɴ ᴛᴏ ᴀʟʟ ɢʀᴏᴜᴘꜱ" },
+		description: { en: "ᴅɪꜰꜰᴜꜱᴇʀ ᴜɴ ᴍᴇꜱꜱᴀɢᴇ ᴅᴇꜱ ᴀᴅᴍɪɴɪꜱᴛʀᴀᴛᴇᴜʀꜱ ᴀ̀ ᴛᴏᴜꜱ ʟᴇꜱ ɢʀᴏᴜᴘᴇꜱ" },
 		category: "owner",
 		guide: {
-			en: "   {pn} <ᴍᴇꜱꜱᴀɢᴇ> — ꜱᴇɴᴅ ᴛᴏ ᴀʟʟ\n   {pn} -t <ᴛɪᴛʟᴇ> | <ᴍᴇꜱꜱᴀɢᴇ> — ᴡɪᴛʜ ᴛɪᴛʟᴇ"
+			en: "   {pn} <ᴍᴇꜱꜱᴀɢᴇ> — ᴇɴᴠᴏʏᴇʀ ᴀ̀ ᴛᴏᴜꜱ\n   {pn} -t <ᴛɪᴛʀᴇ> | <ᴍᴇꜱꜱᴀɢᴇ> — ᴀᴠᴇᴄ ᴜɴ ᴛɪᴛʀᴇ ꜱᴘᴇ́ᴄɪꜰɪǫᴜᴇ"
 		},
 		envConfig: { delayPerGroup: 250 }
 	},
 
 	langs: {
 		en: {
-			missingMessage: "⌀ ᴘʟᴇᴀꜱᴇ ᴇɴᴛᴇʀ ᴀ ᴍᴇꜱꜱᴀɢᴇ",
-			header:         "📢 ɴᴏᴛɪꜰɪᴄᴀᴛɪᴏɴ ꜰʀᴏᴍ ᴍᴀʀɪɴ ᴀᴅᴍɪɴ\n━━━━━━━━━━━━━━━",
-			sending:        "◈ ꜱᴇɴᴅɪɴɢ ᴛᴏ %1 ɢʀᴏᴜᴘꜱ...",
-			sent:           "✦ ꜱᴇɴᴛ ᴛᴏ %1 ɢʀᴏᴜᴘꜱ",
-			error:          "⌀ ꜰᴀɪʟᴇᴅ ꜰᴏʀ %1 ɢʀᴏᴜᴘꜱ:\n%2"
+			missingMessage: "⌀ ᴠᴇᴜɪʟʟᴇᴢ ᴇ́ᴄʀɪʀᴇ ᴜɴ ᴍᴇꜱꜱᴀɢᴇ ᴀ̀ ᴅɪꜰꜰᴜꜱᴇʀ",
+			header:         "📢 ᴍᴇꜱꜱᴀɢᴇ ᴅᴇ ʟ'ᴀᴅᴍɪɴɪꜱᴛʀᴀᴛɪᴏɴ\n━━━━━━━━━━━━━━━",
+			sending:        "◈ ᴇɴᴠᴏɪ ᴇɴ ᴄᴏᴜʀꜱ ᴠᴇʀꜱ %1 ɢʀᴏᴜᴘᴇꜱ...",
+			sent:           "✦ ᴍᴇꜱꜱᴀɢᴇ ᴛʀᴀɴꜱᴍɪꜱ ᴀ̀ %1 ɢʀᴏᴜᴘᴇꜱ",
+			error:          "⌀ ᴇ́ᴄʜᴇᴄ ᴘᴏᴜʀ %1 ɢʀᴏᴜᴘᴇ(ꜱ) :\n%2"
 		}
 	},
 
@@ -87,6 +89,6 @@ module.exports = {
 			const detail = errors.map(e => `◦ ${e.desc || e}: ${(e.ids || []).join(", ")}`).join("\n");
 			msg += getLang("error", total, detail);
 		}
-		message.reply(msg || "⌀ ɴᴏ ɢʀᴏᴜᴘꜱ ꜰᴏᴜɴᴅ");
+		message.reply(msg || "⌀ ᴀᴜᴄᴜɴ ɢʀᴏᴜᴘᴇ ᴛʀᴏᴜᴠᴇ́");
 	}
 };
