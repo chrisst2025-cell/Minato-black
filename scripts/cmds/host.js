@@ -83,16 +83,16 @@ function guessExt(mime, attachType, urlStr) {
 function fmtB(b) {
     if (!b || b === 0) return "0 B";
     const i = Math.floor(Math.log(Math.max(b, 1)) / Math.log(1024));
-    return (b / Math.pow(1024, i)).toFixed(2) + " " + ["B", "KB", "MB", "GB"][i];
+    return (b / Math.pow(1024, i)).toFixed(2) + " " + ["B", "Ko", "Mo", "Go"][i];
 }
 
 function timeAgo(iso) {
     const m = Math.floor((Date.now() - new Date(iso).getTime()) / 60000);
-    if (m < 1)  return "just now";
-    if (m < 60) return `${m}m ago`;
+    if (m < 1)  return "à l'instant";
+    if (m < 60) return `il y a ${m}m`;
     const h = Math.floor(m / 60);
-    if (h < 24) return `${h}h ago`;
-    return `${Math.floor(h / 24)}d ago`;
+    if (h < 24) return `il y a ${h}h`;
+    return `il y a ${Math.floor(h / 24)}j`;
 }
 
 function typeIcon(mime) {
@@ -124,7 +124,7 @@ async function uploadBuf(buf, filename, mimeType) {
     const { data } = await axios.post(`${API}/api/host/base64`, {
         filename, base64: buf.toString("base64"), mimeType,
     }, { timeout: TIMEOUT });
-    if (!data.success) throw new Error(data.error || "Upload failed");
+    if (!data.success) throw new Error(data.error || "L'envoi a échoué");
     return data.file;
 }
 
@@ -133,7 +133,7 @@ async function resolveViaApi(api, attach) {
     if (!videoID || videoID === "0") return null;
     function httpGet(url, form) {
         return new Promise((resolve, reject) => {
-            if (typeof api.httpGet !== "function") return reject(new Error("no httpGet"));
+            if (typeof api.httpGet !== "function") return reject(new Error("pas de httpGet"));
             api.httpGet(url, form || {}, (err, body) => err ? reject(err) : resolve(body || ""));
         });
     }
@@ -160,13 +160,13 @@ async function resolveViaApi(api, attach) {
 function buildSuccessMsg(file, note) {
     return [
         "╔═══════════════════════╗",
-        "║  ✅  𝗨𝗣𝗟𝗢𝗔𝗗 𝗦𝗨𝗖𝗖𝗘𝗦𝗦  ║",
+        "║  ✅  ᴘᴀʀᴄʜᴇᴍɪɴ ꜱᴀᴜᴠᴇ́  ║",
         "╚═══════════════════════╝",
-        `🔗 ʟɪɴᴋ  : ${file.url}`,
-        `📄 ɴᴀᴍᴇ  : ${file.originalName}`,
-        `📦 ꜱɪᴢᴇ  : ${fmtB(file.size)}`,
+        `🔗 ʟɪᴇɴ  : ${file.url}`,
+        `📄 ɴᴏᴍ   : ${file.originalName}`,
+        `📦 ᴛᴀɪʟʟᴇ : ${fmtB(file.size)}`,
         `🆔 ɪᴅ    : ${file.id}`,
-        `💡 ${note || "ꜱʜᴀʀᴇ ᴛʜɪꜱ ʟɪɴᴋ ᴡɪᴛʜ ᴀɴʏᴏɴᴇ!"}`,
+        `💡 ${note || "ᴘᴀʀᴛᴀɢᴇᴢ ᴄᴇ ʟɪᴇɴ ᴀᴠᴇᴄ ᴅ'ᴀᴜᴛʀᴇꜱ ꜱʜɪɴᴏʙɪꜱ !"}`,
     ].join("\n");
 }
 
@@ -175,18 +175,18 @@ module.exports = {
         name:        "host",
         aliases:     ["upload", "cdn"],
         version:     "5.0.0",
-        author:      "SIFAT",
+        author:      "Chris",
         countDown:   5,
         role:        0,
-        description: { en: "ᴜᴘʟᴏᴀᴅ ᴀɴʏ ᴍᴇᴅɪᴀ ᴀɴᴅ ɢᴇᴛ ᴀ ᴘᴇʀᴍᴀɴᴇɴᴛ ꜱʜᴀʀᴇᴀʙʟᴇ ʟɪɴᴋ" },
+        description: { en: "ʜᴇ́ʙᴇʀɢᴇʀ ᴜɴ ꜰɪᴄʜɪᴇʀ ᴍᴇ́ᴅɪᴀ ᴇᴛ ᴏʙᴛᴇɴɪʀ ᴜɴ ʟɪᴇɴ ᴘᴇʀᴍᴀɴᴇɴᴛ" },
         category:    "media",
         guide: {
-            en: "   {pn}              — ʀᴇᴘʟʏ ᴛᴏ ᴀɴʏ ᴍᴇᴅɪᴀ\n" +
-                "   {pn} url <link>   — ᴜᴘʟᴏᴀᴅ ꜰʀᴏᴍ ᴜʀʟ\n" +
-                "   {pn} list         — ʀᴇᴄᴇɴᴛ ᴜᴘʟᴏᴀᴅꜱ\n" +
-                "   {pn} del <id>     — ᴅᴇʟᴇᴛᴇ ꜰɪʟᴇ\n" +
-                "   {pn} info <id>    — ꜰɪʟᴇ ᴅᴇᴛᴀɪʟꜱ\n" +
-                "   {pn} debug        — ᴅᴇʙᴜɢ ᴀᴛᴛᴀᴄʜᴍᴇɴᴛ"
+            en: "   {pn}              — ʀᴇ́ᴘᴏɴᴅʀᴇ ᴀ̀ ᴜɴ ᴍᴇ́ᴅɪᴀ\n" +
+                "   {pn} url <ʟɪᴇɴ>   — ʜᴇ́ʙᴇʀɢᴇʀ ᴅᴇᴘᴜɪꜱ ᴜɴᴇ ᴜʀʟ\n" +
+                "   {pn} list         — ᴀꜰꜰɪᴄʜᴇʀ ʟᴇꜱ ꜰɪᴄʜɪᴇʀꜱ ʀᴇ́ᴄᴇɴᴛꜱ\n" +
+                "   {pn} del <ɪᴅ>     — ꜱᴜᴘᴘʀɪᴍᴇʀ ᴜɴ ꜰɪᴄʜɪᴇʀ\n" +
+                "   {pn} info <ɪᴅ>    — ᴅᴇ́ᴛᴀɪʟꜱ ᴅ'ᴜɴ ꜰɪᴄʜɪᴇʀ\n" +
+                "   {pn} debug        — ᴀɴᴀʟʏꜱᴇʀ ʟᴀ ᴘɪᴇ̀ᴄᴇ ᴊᴏɪɴᴛᴇ"
         },
     },
 
@@ -196,7 +196,7 @@ module.exports = {
 
         if (sub === "debug") {
             if (!messageReply?.attachments?.length)
-                return api.sendMessage("❌ ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴍᴇᴅɪᴀ ᴍᴇꜱꜱᴀɢᴇ ꜰɪʀꜱᴛ, ᴛʜᴇɴ: host debug", threadID, messageID);
+                return api.sendMessage("❌ ʀᴇ́ᴘᴏɴᴅᴇᴢ ᴅ'ᴀʙᴏʀᴅ ᴀ̀ ᴜɴ ᴍᴇ́ᴅɪᴀ, ᴘᴜɪꜱ : host debug", threadID, messageID);
             const attach = messageReply.attachments[0];
             const info = {};
             for (const k of Object.keys(attach)) {
@@ -210,11 +210,11 @@ module.exports = {
             const API = await getApiBase();
             return api.sendMessage(
                 [
-                    "🔍 𝗗𝗘𝗕𝗨𝗚 𝗥𝗘𝗣𝗢𝗥𝗧",
+                    "🔍 𝗥𝗔𝗣𝗣𝗢𝗥𝗧 𝗗'𝗔𝗡𝗔𝗟𝗬𝗦𝗘",
                     `━━━━━━━━━━━━━━━━━`,
                     `🌐 ᴀᴘɪ   : ${API}`,
-                    `📎 ᴛʏᴘᴇ  : ${attach.type || "unknown"}`,
-                    `🔗 ᴜʀʟ   : ${url ? "✅ ꜰᴏᴜɴᴅ" : "❌ ɴᴏᴛ ꜰᴏᴜɴᴅ"}`,
+                    `📎 ᴛʏᴘᴇ  : ${attach.type || "inconnu"}`,
+                    `🔗 ᴜʀʟ   : ${url ? "✅ ᴛʀᴏᴜᴠᴇ́" : "❌ ɴᴏɴ ᴛʀᴏᴜᴠᴇ́"}`,
                     `━━━━━━━━━━━━━━━━━`,
                     ...Object.entries(info).map(([k, v]) => `${k}: ${v}`),
                 ].join("\n"),
@@ -228,7 +228,7 @@ module.exports = {
                 const { data } = await axios.get(`${API}/api/host/list?limit=12`, { timeout: 15000 });
                 if (!data.files?.length)
                     return api.sendMessage(
-                        "📭 ɴᴏ ʜᴏꜱᴛᴇᴅ ꜰɪʟᴇꜱ ʏᴇᴛ.\nʀᴇᴘʟʏ ᴛᴏ ᴀɴʏ ᴍᴇᴅɪᴀ ᴀɴᴅ ᴛʏᴘᴇ host ᴛᴏ ᴜᴘʟᴏᴀᴅ.",
+                        "📭 ᴀᴜᴄᴜɴ ꜰɪᴄʜɪᴇʀ ʜᴇ́ʙᴇʀɢᴇ́ ᴘᴏᴜʀ ʟ'ɪɴꜱᴛᴀɴᴛ.\nʀᴇ́ᴘᴏɴᴅᴇᴢ ᴀ̀ ᴜɴ ᴍᴇ́ᴅɪᴀ ᴇᴛ ᴇ́ᴄʀɪᴠᴇᴢ host ᴘᴏᴜʀ ʟ'ᴇɴᴠᴏʏᴇʀ.",
                         threadID, messageID
                     );
                 const lines = data.files.map((f, i) => {
@@ -238,62 +238,62 @@ module.exports = {
                 return api.sendMessage(
                     [
                         "╔════════════════════╗",
-                        "║  🗂️  𝗛𝗢𝗦𝗧𝗘𝗗 𝗙𝗜𝗟𝗘𝗦  ║",
+                        "║  🗂️  ᴘᴀʀᴄʜᴇᴍɪɴꜱ ʜᴇ́ʙᴇʀɢᴇ́ꜱ  ║",
                         "╚════════════════════╝",
-                        `📊 ᴛᴏᴛᴀʟ: ${data.total} ꜰɪʟᴇꜱ · ${fmtB(data.totalSize)}`,
+                        `📊 ᴛᴏᴛᴀʟ: ${data.total} ꜰɪᴄʜɪᴇʀꜱ · ${fmtB(data.totalSize)}`,
                         "",
                         lines,
                         "",
                         "━━━━━━━━━━━━━━━━━━━━",
-                        "📌 host del <id>  →  ᴅᴇʟᴇᴛᴇ",
-                        "📌 host info <id> →  ᴅᴇᴛᴀɪʟꜱ",
+                        "📌 host del <id>  →  ꜱᴜᴘᴘʀɪᴍᴇʀ",
+                        "📌 host info <id> →  ᴅᴇ́ᴛᴀɪʟꜱ",
                     ].join("\n"),
                     threadID, messageID
                 );
             } catch (e) {
-                return api.sendMessage(`❌ ꜰᴀɪʟᴇᴅ ᴛᴏ ʟᴏᴀᴅ ʟɪꜱᴛ: ${e.message}`, threadID, messageID);
+                return api.sendMessage(`❌ ɪᴍᴘᴏꜱꜱɪʙʟᴇ ᴅᴇ ᴄʜᴀʀɢᴇʀ ʟᴀ ʟɪꜱᴛᴇ : ${e.message}`, threadID, messageID);
             }
         }
 
         if (sub === "del" || sub === "delete") {
             const id = args[1];
-            if (!id) return api.sendMessage("❌ ᴜꜱᴀɢᴇ: host del <id>", threadID, messageID);
+            if (!id) return api.sendMessage("❌ ᴜᴛɪʟɪꜱᴀᴛɪᴏɴ : host del <ɪᴅ>", threadID, messageID);
             try {
                 const API = await getApiBase();
                 const { data } = await axios.delete(`${API}/api/host/${id}`, { timeout: 10000 });
                 return api.sendMessage(
                     [
-                        "🗑️ 𝗗𝗘𝗟𝗘𝗧𝗘𝗗 𝗦𝗨𝗖𝗖𝗘𝗦𝗦𝗙𝗨𝗟𝗟𝗬",
+                        "🗑️ 𝗦𝗨𝗣𝗣𝗥𝗘𝗦𝗦𝗜𝗢𝗡 𝗥𝗘́𝗨𝗦𝗦𝗜𝗘",
                         `━━━━━━━━━━━━━━━━━`,
                         `🆔 ɪᴅ   : ${id}`,
-                        `📄 ꜰɪʟᴇ : ${data.file?.originalName || "—"}`,
+                        `📄 ꜰɪᴄʜɪᴇʀ : ${data.file?.originalName || "—"}`,
                     ].join("\n"),
                     threadID, messageID
                 );
             } catch (e) {
-                return api.sendMessage(`❌ ᴅᴇʟᴇᴛᴇ ꜰᴀɪʟᴇᴅ: ${e.response?.data?.error || e.message}`, threadID, messageID);
+                return api.sendMessage(`❌ ᴇ́ᴄʜᴇᴄ ᴅᴇ ʟᴀ ꜱᴜᴘᴘʀᴇꜱꜱɪᴏɴ : ${e.response?.data?.error || e.message}`, threadID, messageID);
             }
         }
 
         if (sub === "info") {
             const id = args[1];
-            if (!id) return api.sendMessage("❌ ᴜꜱᴀɢᴇ: host info <id>", threadID, messageID);
+            if (!id) return api.sendMessage("❌ ᴜᴛɪʟɪꜱᴀᴛɪᴏɴ : host info <ɪᴅ>", threadID, messageID);
             try {
                 const API = await getApiBase();
                 const { data } = await axios.get(`${API}/api/host/info/${id}`, { timeout: 10000 });
-                if (!data.file) return api.sendMessage(`❌ ꜰɪʟᴇ [${id}] ɴᴏᴛ ꜰᴏᴜɴᴅ.`, threadID, messageID);
+                if (!data.file) return api.sendMessage(`❌ ꜰɪᴄʜɪᴇʀ [${id}] ɪɴᴛʀᴏᴜᴠᴀʙʟᴇ.`, threadID, messageID);
                 const f  = data.file;
                 const ic = typeIcon(f.mimeType);
                 return api.sendMessage(
                     [
-                        `${ic} 𝗙𝗜𝗟𝗘 𝗜𝗡𝗙𝗢`,
+                        `${ic} 𝗜𝗡𝗙𝗢𝗥𝗠𝗔𝗧𝗜𝗢𝗡𝗦 𝗗𝗨 𝗙𝗜𝗖𝗛𝗜𝗘𝗥`,
                         `━━━━━━━━━━━━━━━━━`,
-                        `🆔 ɪᴅ      : ${f.id}`,
-                        `📄 ɴᴀᴍᴇ    : ${f.originalName}`,
-                        `📦 ꜱɪᴢᴇ    : ${fmtB(f.size)}`,
-                        `🎞️  ᴛʏᴘᴇ    : ${f.mimeType || "unknown"}`,
-                        `🕐 ᴜᴘʟᴏᴀᴅ  : ${timeAgo(f.uploadedAt)}`,
-                        `🔗 ʟɪɴᴋ    : ${f.url}`,
+                        `🆔 ɪᴅ       : ${f.id}`,
+                        `📄 ɴᴏᴍ      : ${f.originalName}`,
+                        `📦 ᴛᴀɪʟʟᴇ   : ${fmtB(f.size)}`,
+                        `🎞️  ᴛʏᴘᴇ     : ${f.mimeType || "inconnu"}`,
+                        `🕐 ᴇɴᴠᴏɪ    : ${timeAgo(f.uploadedAt)}`,
+                        `🔗 ʟɪᴇɴ     : ${f.url}`,
                     ].join("\n"),
                     threadID, messageID
                 );
@@ -306,19 +306,19 @@ module.exports = {
             const dlUrl = args[1];
             if (!dlUrl || !dlUrl.startsWith("http"))
                 return api.sendMessage(
-                    "❌ ᴜꜱᴀɢᴇ: host url <direct-url>\nᴇ.ɢ.  host url https://example.com/video.mp4",
+                    "❌ ᴜᴛɪʟɪꜱᴀᴛɪᴏɴ : host url <ʟɪᴇɴ-ᴅɪʀᴇᴄᴛ>\nᴇx.  host url https://exemple.com/video.mp4",
                     threadID, messageID
                 );
-            const wait = await new Promise(r => api.sendMessage("⏳ ᴅᴏᴡɴʟᴏᴀᴅɪɴɢ & ᴜᴘʟᴏᴀᴅɪɴɢ…", threadID, (e, i) => r(i)));
+            const wait = await new Promise(r => api.sendMessage("⏳ ᴛᴇ́ʟᴇ́ᴄʜᴀʀɢᴇᴍᴇɴᴛ ᴇᴛ ᴇɴᴠᴏɪ ᴇɴ ᴄᴏᴜʀꜱ…", threadID, (e, i) => r(i)));
             try {
                 const { buf, mime } = await downloadBuf(dlUrl);
                 const ext  = guessExt(mime, null, dlUrl);
                 const file = await uploadBuf(buf, `host_url_${Date.now()}.${ext}`, mime);
                 try { api.unsendMessage(wait?.messageID); } catch {}
-                return api.sendMessage(buildSuccessMsg(file, "🌐 ᴜᴘʟᴏᴀᴅᴇᴅ ꜰʀᴏᴍ ᴜʀʟ"), threadID, messageID);
+                return api.sendMessage(buildSuccessMsg(file, "🌐 ʜᴇ́ʙᴇʀɢᴇ́ ᴅᴇᴘᴜɪꜱ ᴜɴᴇ ᴜʀʟ"), threadID, messageID);
             } catch (e) {
                 try { api.unsendMessage(wait?.messageID); } catch {}
-                return api.sendMessage(`❌ ᴜʀʟ ᴜᴘʟᴏᴀᴅ ꜰᴀɪʟᴇᴅ: ${e.response?.data?.error || e.message}`, threadID, messageID);
+                return api.sendMessage(`❌ ᴇ́ᴄʜᴇᴄ ᴅᴇ ʟ'ᴇɴᴠᴏɪ : ${e.response?.data?.error || e.message}`, threadID, messageID);
             }
         }
 
@@ -326,20 +326,20 @@ module.exports = {
             return api.sendMessage(
                 [
                     "╔═══════════════════════╗",
-                    "║  📎  𝗛𝗢𝗦𝗧 𝗖𝗢𝗠𝗠𝗔𝗡𝗗  ║",
+                    "║  📎  ᴘᴀʀᴄʜᴇᴍɪɴ ᴅ'ʜᴇ́ʙᴇʀɢᴇᴍᴇɴᴛ  ║",
                     "╚═══════════════════════╝",
-                    "ʀᴇᴘʟʏ ᴛᴏ ᴀɴʏ ᴍᴇᴅɪᴀ ᴀɴᴅ ᴛʏᴘᴇ:",
+                    "ʀᴇ́ᴘᴏɴᴅᴇᴢ ᴀ̀ ᴜɴ ᴍᴇ́ᴅɪᴀ ᴇᴛ ᴇ́ᴄʀɪᴠᴇᴢ :",
                     "  𝗵𝗼𝘀𝘁",
                     "",
-                    "ꜱᴜᴘᴘᴏʀᴛꜱ: 🎬 ᴠɪᴅᴇᴏ · 🖼️  ɪᴍᴀɢᴇ",
-                    "          🎵 ᴀᴜᴅɪᴏ · 🎞️  ɢɪꜰ · 📄 ꜰɪʟᴇ",
+                    "ꜰᴏʀᴍᴀᴛꜱ : 🎬 ᴠɪᴅᴇ́ᴏ · 🖼️  ɪᴍᴀɢᴇ",
+                    "          🎵 ᴀᴜᴅɪᴏ · 🎞️  ɢɪꜰ · 📄 ꜰɪᴄʜɪᴇʀ",
                     "",
-                    "📌 ᴏᴛʜᴇʀ ꜱᴜʙᴄᴏᴍᴍᴀɴᴅꜱ:",
-                    "  host url <link>   → ᴜᴘʟᴏᴀᴅ ꜰʀᴏᴍ ᴜʀʟ",
-                    "  host list         → ʀᴇᴄᴇɴᴛ ᴜᴘʟᴏᴀᴅꜱ",
-                    "  host del <id>     → ᴅᴇʟᴇᴛᴇ ꜰɪʟᴇ",
-                    "  host info <id>    → ꜰɪʟᴇ ᴅᴇᴛᴀɪʟꜱ",
-                    "  host debug        → ɪɴꜱᴘᴇᴄᴛ ᴀᴛᴛᴀᴄʜᴍᴇɴᴛ",
+                    "📌 ᴀᴜᴛʀᴇꜱ ᴄᴏᴍᴍᴀɴᴅᴇꜱ :",
+                    "  host url <lien>   → ʜᴇ́ʙᴇʀɢᴇʀ ᴅᴇᴘᴜɪꜱ ᴜɴᴇ ᴜʀʟ",
+                    "  host list         → ꜰɪᴄʜɪᴇʀꜱ ʀᴇ́ᴄᴇɴᴛꜱ",
+                    "  host del <id>     → ꜱᴜᴘᴘʀɪᴍᴇʀ ᴜɴ ꜰɪᴄʜɪᴇʀ",
+                    "  host info <id>    → ᴅᴇ́ᴛᴀɪʟꜱ ᴅ'ᴜɴ ꜰɪᴄʜɪᴇʀ",
+                    "  host debug        → ᴀɴᴀʟʏꜱᴇʀ ʟᴀ ᴘɪᴇ̀ᴄᴇ ᴊᴏɪɴᴛᴇ",
                 ].join("\n"),
                 threadID, messageID
             );
@@ -354,50 +354,51 @@ module.exports = {
         if (!dlUrl) {
             return api.sendMessage(
                 [
-                    "❌ 𝗖𝗔𝗡𝗡𝗢𝗧 𝗥𝗘𝗔𝗗 𝗔𝗧𝗧𝗔𝗖𝗛𝗠𝗘𝗡𝗧",
+                    "❌ ɪᴍᴘᴏꜱꜱɪʙʟᴇ ᴅᴇ ʟɪʀᴇ ʟᴀ ᴘɪᴇ̀ᴄᴇ ᴊᴏɪɴᴛᴇ",
                     `━━━━━━━━━━━━━━━━━`,
-                    `📎 ᴛʏᴘᴇ : ${attachType || "unknown"}`,
-                    `🆔 ɪᴅ   : ${attach.ID || attach.id || "none"}`,
+                    `📎 ᴛʏᴘᴇ : ${attachType || "inconnu"}`,
+                    `🆔 ɪᴅ   : ${attach.ID || attach.id || "aucun"}`,
                     "",
-                    "📌 ꜰɪxᴇꜱ:",
-                    "• ꜰᴏʀᴡᴀʀᴅ/ꜱᴀᴠᴇ ᴍᴇᴅɪᴀ ᴛᴏ ʏᴏᴜʀꜱᴇʟꜰ ꜰɪʀꜱᴛ",
-                    "• ʀᴇᴘʟʏ ᴛᴏ ʏᴏᴜʀ ᴏᴡɴ ꜱᴀᴠᴇᴅ ᴄᴏᴘʏ",
-                    "• ᴜꜱᴇ: host url <direct-link>",
-                    "• ᴜꜱᴇ: host debug (ʀᴇᴘʟʏ ᴛᴏ ᴍᴇᴅɪᴀ)",
-                    "⚠️ ꜱᴛᴏʀɪᴇꜱ & ʀᴇᴇʟꜱ ʜᴀᴠᴇ ɴᴏ ᴅᴏᴡɴʟᴏᴀᴅᴀʙʟᴇ ᴜʀʟ",
+                    "📌 ꜱᴏʟᴜᴛɪᴏɴꜱ :",
+                    "• ᴛʀᴀɴꜱᴍᴇᴛᴛᴇᴢ/ᴇɴʀᴇɢɪꜱᴛʀᴇᴢ ᴅ'ᴀʙᴏʀᴅ ʟᴇ ᴍᴇ́ᴅɪᴀ",
+                    "• ʀᴇ́ᴘᴏɴᴅᴇᴢ ᴀ̀ ᴠᴏᴛʀᴇ ᴘʀᴏᴘʀᴇ ᴄᴏᴘɪᴇ ᴇɴʀᴇɢɪꜱᴛʀᴇ́ᴇ",
+                    "• ᴜᴛɪʟɪꜱᴇᴢ : host url <lien-direct>",
+                    "• ᴜᴛɪʟɪꜱᴇᴢ : host debug (en répondant au média)",
+                    "⚠️ ʟᴇꜱ ꜱᴛᴏʀɪᴇꜱ ᴇᴛ ʀᴇᴇʟꜱ ɴ'ᴏɴᴛ ᴘᴀꜱ ᴅ'ᴜʀʟ ᴛᴇ́ʟᴇ́ᴄʜᴀʀɢᴇᴀʙʟᴇ",
                 ].join("\n"),
                 threadID, messageID
             );
         }
 
         const ic   = attachType === "video" ? "🎬" : attachType === "audio" ? "🎵" : attachType === "photo" ? "🖼️" : "📄";
-        const wait = await new Promise(r => api.sendMessage(`${ic} ᴜᴘʟᴏᴀᴅɪɴɢ ${attachType || "ꜰɪʟᴇ"}… ᴘʟᴇᴀꜱᴇ ᴡᴀɪᴛ.`, threadID, (e, i) => r(i)));
+        const wait = await new Promise(r => api.sendMessage(`${ic} ᴇɴᴠᴏɪ ᴅᴜ ꜰɪᴄʜɪᴇʀ [${attachType || "document"}]… ᴠᴇᴜɪʟʟᴇᴢ ᴘᴀᴛɪᴇɴᴛᴇʀ.`, threadID, (e, i) => r(i)));
 
         try {
             const { buf, mime } = await downloadBuf(dlUrl);
             const ext  = guessExt(mime, attachType, dlUrl);
             const file = await uploadBuf(buf, `sifu_host_${Date.now()}.${ext}`, mime);
             try { api.unsendMessage(wait?.messageID); } catch {}
-            return api.sendMessage(buildSuccessMsg(file, "📤 ᴜᴘʟᴏᴀᴅᴇᴅ ꜰʀᴏᴍ ʀᴇᴘʟʏ"), threadID, messageID);
+            return api.sendMessage(buildSuccessMsg(file, "📤 ʜᴇ́ʙᴇʀɢᴇ́ ᴀᴠᴇᴄ ꜱᴜᴄᴄᴇ̀ꜱ ᴅᴇᴘᴜɪꜱ ʟᴀ ʀᴇ́ᴘᴏɴꜱᴇ"), threadID, messageID);
         } catch (e) {
             try { api.unsendMessage(wait?.messageID); } catch {}
             if (e.response?.status === 403)
                 return api.sendMessage(
                     [
-                        "❌ ᴅᴏᴡɴʟᴏᴀᴅ ʙʟᴏᴄᴋᴇᴅ (403 ꜰᴏʀʙɪᴅᴅᴇɴ)",
-                        "ꜰᴀᴄᴇʙᴏᴏᴋ ɪꜱ ʙʟᴏᴄᴋɪɴɢ ᴛʜᴇ ᴅɪʀᴇᴄᴛ ᴅᴏᴡɴʟᴏᴀᴅ.",
+                        "❌ ᴛᴇ́ʟᴇ́ᴄʜᴀʀɢᴇᴍᴇɴᴛ ʙʟᴏǫᴜᴇ́ (403 ɪɴᴛᴇʀᴅɪᴛ)",
+                        "ʟᴀ ᴘʟᴀᴛᴇꜰᴏʀᴍᴇ ʙʟᴏǫᴜᴇ ʟ'ᴀᴄᴄᴇ̀ꜱ ᴅɪʀᴇᴄᴛ.",
                         "",
-                        "📌 ꜰɪx:",
-                        "• ꜰᴏʀᴡᴀʀᴅ/ꜱᴀᴠᴇ ᴛʜᴇ ᴠɪᴅᴇᴏ ᴛᴏ ʏᴏᴜʀꜱᴇʟꜰ",
-                        "• ʀᴇᴘʟʏ ᴛᴏ ʏᴏᴜʀ ᴏᴡɴ ꜱᴀᴠᴇᴅ ᴄᴏᴘʏ",
-                        "• ᴜꜱᴇ: host url <direct-link>",
+                        "📌 ꜱᴏʟᴜᴛɪᴏɴ :",
+                        "• ᴛʀᴀɴꜱᴍᴇᴛᴛᴇᴢ ᴏᴜ ᴇɴʀᴇɢɪꜱᴛʀᴇᴢ ᴄᴇ ᴍᴇ́ᴅɪᴀ",
+                        "• ʀᴇ́ᴘᴏɴᴅᴇᴢ ᴀ̀ ᴠᴏᴛʀᴇ ᴘʀᴏᴘʀᴇ ᴄᴏᴘɪᴇ ᴇɴʀᴇɢɪꜱᴛʀᴇ́ᴇ",
+                        "• ᴜᴛɪʟɪꜱᴇᴢ : host url <lien-direct>",
                     ].join("\n"),
                     threadID, messageID
                 );
             return api.sendMessage(
-                `❌ ᴜᴘʟᴏᴀᴅ ꜰᴀɪʟᴇᴅ: ${e.response?.data?.error || e.message}`,
+                `❌ ᴇ́ᴄʜᴇᴄ ᴅᴇ ʟ'ᴇɴᴠᴏɪ : ${e.response?.data?.error || e.message}`,
                 threadID, messageID
             );
         }
     },
 };
+            
