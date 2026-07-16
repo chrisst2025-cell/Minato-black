@@ -4,7 +4,7 @@ const path = require("path");
 const moment = require("moment-timezone");
 
 const TZ = "Asia/Dhaka";
-const BANK_NAME = "MARIN BANK";
+const BANK_NAME = "MINATO BANK";
 const BANK_TAG = "M·A·R·I·N";
 const CURRENCY = "$";
 const INTEREST_RATE_DAILY = 0.02;
