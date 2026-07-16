@@ -1,3 +1,5 @@
+"use strict";
+
 const fs = require("fs-extra");
 const path = require("path");
 
@@ -32,20 +34,20 @@ module.exports = {
 		name: "noprefix",
 		aliases: ["np", "nopfx"],
 		version: "2.0.0",
-		author: "SIFAT",
+		author: "Chris",
 		countDown: 3,
 		role: 2,
-		description: { en: "ᴛᴏɢɢʟᴇ ɴᴏ-ᴘʀᴇꜰɪx ᴍᴏᴅᴇ & ᴍᴀɴᴀɢᴇ ɴᴘ ᴜꜱᴇʀꜱ" },
+		description: { en: "ᴀᴄᴛɪᴠᴇʀ/ᴅᴇ́ꜱᴀᴄᴛɪᴠᴇʀ ʟᴇ ᴍᴏᴅᴇ ꜱᴀɴꜱ ᴘʀᴇ́ꜰɪxᴇ ᴇᴛ ɢᴇ́ʀᴇʀ ʟᴇꜱ ᴜᴛɪʟɪꜱᴀᴛᴇᴜʀꜱ ᴀᴜᴛᴏʀɪꜱᴇ́ꜱ" },
 		category: "owner",
-		guide: { en: "{pn} on | off | admin | status\n{pn} user add/remove [@|ᴜɪᴅ|ʀᴇᴘʟʏ]\n{pn} user list" }
+		guide: { en: "{pn} on | off | admin | status\n{pn} user list" }
 	},
 
 	langs: {
 		en: {
-			status:   "✦ ɴᴏ-ᴘʀᴇꜰɪx ꜱᴛᴀᴛᴜꜱ\n◈ ᴍᴏᴅᴇ   : %1\n◈ ᴜᴘᴛɪᴍᴇ : %2\n◈ ᴘʀᴇꜰɪx : %3",
-			setOn:    "✦ ɴᴏ-ᴘʀᴇꜰɪx ─ ᴏɴ\n◈ ᴇᴠᴇʀʏᴏɴᴇ ᴄᴀɴ ᴏᴍɪᴛ ᴘʀᴇꜰɪx",
-			setOff:   "✦ ɴᴏ-ᴘʀᴇꜰɪx ─ ᴏꜰꜰ\n◈ ᴘʀᴇꜰɪx \"%1\" ʀᴇǫᴜɪʀᴇᴅ ꜰᴏʀ ᴀʟʟ",
-			setAdmin: "✦ ɴᴏ-ᴘʀᴇꜰɪx ─ ᴀᴅᴍɪɴ\n◈ ᴏɴʟʏ ʙᴏᴛ ᴀᴅᴍɪɴꜱ ᴄᴀɴ ᴏᴍɪᴛ ᴘʀᴇꜰɪx"
+			status:   "✦ ᴇ́ᴛᴀᴛ ᴅᴜ ɴᴏ-ᴘʀᴇ́ꜰɪxᴇ\n◈ ᴍᴏᴅᴇ   : %1\n◈ ᴜᴘᴛɪᴍᴇ : %2\n◈ ᴘʀᴇ́ꜰɪxᴇ : %3",
+			setOn:    "✦ ɴᴏ-ᴘʀᴇ́ꜰɪxᴇ ─ ᴀᴄᴛɪᴠᴇ́\n◈ ᴄʜᴀǫᴜᴇ ꜱʜɪɴᴏʙɪ ᴘᴇᴜᴛ ᴏᴍᴇᴛᴛʀᴇ ʟᴇ ᴘʀᴇ́ꜰɪxᴇ",
+			setOff:   "✦ ɴᴏ-ᴘʀᴇ́ꜰɪxᴇ ─ ᴅᴇ́ꜱᴀᴄᴛɪᴠᴇ́\n◈ ʟᴇ ᴘʀᴇ́ꜰɪxᴇ \"%1\" ᴇꜱᴛ ʀᴇǫᴜɪꜱ ᴘᴏᴜʀ ᴛᴏᴜꜱ",
+			setAdmin: "✦ ɴᴏ-ᴘʀᴇ́ꜰɪxᴇ ─ ᴀᴅᴍɪɴ\n◈ ꜱᴇᴜʟꜱ ʟᴇꜱ ᴀᴅᴍɪɴɪꜱᴛʀᴀᴛᴇᴜʀꜱ ᴘᴇᴜᴠᴇɴᴛ ᴏᴍᴇᴛᴛʀᴇ ʟᴇ ᴘʀᴇ́ꜰɪxᴇ"
 		}
 	},
 
@@ -53,7 +55,7 @@ module.exports = {
 		const sub = (args[0] || "").toLowerCase();
 		const cfg = global.GoatBot.config;
 		const mode = getMode();
-		const modeLabel = mode === "on" ? "✅ ᴏɴ (ᴇᴠᴇʀʏᴏɴᴇ)" : mode === "adminOnly" ? "🛡 ᴀᴅᴍɪɴ ᴏɴʟʏ" : "⛔ ᴏꜰꜰ";
+		const modeLabel = mode === "on" ? "✅ ᴀᴄᴛɪᴠᴇ́ (ᴛᴏᴜꜱ)" : mode === "adminOnly" ? "🛡️ ᴀᴅᴍɪɴꜱ ᴜɴɪǫᴜᴇᴍᴇɴᴛ" : "⛔ ᴅᴇ́ꜱᴀᴄᴛɪᴠᴇ́";
 
 		if (!sub || sub === "status" || sub === "info")
 			return message.reply(getLang("status", modeLabel, uptime(), cfg.prefix || "─"));
@@ -67,15 +69,15 @@ module.exports = {
 			const noPrefix = cfg.noPrefix_users || [];
 
 			if (action === "list") {
-				if (!noPrefix.length) return message.reply("⌀ ɴᴏ ᴘᴇʀ-ᴜꜱᴇʀ ᴇxᴇᴍᴘᴛɪᴏɴꜱ");
+				if (!noPrefix.length) return message.reply("⌀ ᴀᴜᴄᴜɴᴇ ᴇxᴄᴇᴘᴛɪᴏɴ ᴅ'ᴜᴛɪʟɪꜱᴀᴛᴇᴜʀ ᴇɴʀᴇɢɪꜱᴛʀᴇ́ᴇ");
 				const lines = await Promise.all(noPrefix.map(async (id, i) => {
 					const u = await usersData.get(id).catch(() => null);
-					return `◦ ${i + 1}. ${u?.name || "Unknown"} [${id}]`;
+					return `◦ ${i + 1}. ${u?.name || "Shinobi inconnu"} [${id}]`;
 				}));
-				return message.reply("✦ ɴᴏ-ᴘʀᴇꜰɪx ᴜꜱᴇʀꜱ:\n" + lines.join("\n"));
+				return message.reply("✦ ᴜᴛɪʟɪꜱᴀᴛᴇᴜʀꜱ ᴇxᴇᴍᴘᴛᴇ́ꜱ ᴅᴇ ᴘʀᴇ́ꜰɪxᴇ :\n" + lines.join("\n"));
 			}
 
-			return message.reply("◈ ᴜꜱᴀɢᴇ: noprefix user list");
+			return message.reply("◈ ᴜᴛɪʟɪꜱᴀᴛɪᴏɴ : noprefix user list");
 		}
 
 		return message.SyntaxError();
