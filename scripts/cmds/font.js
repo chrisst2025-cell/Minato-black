@@ -25,7 +25,7 @@ module.exports = {
         try {
 
             if (action === "list") {
-                const text = args.slice(1).join(" ") || "Sifat";
+                const text = args.slice(1).join(" ") || "chris st";
 
                 message.reaction("⏳", messageID);
 
