@@ -56,11 +56,11 @@ module.exports = {
         name:        "autoreact",
         aliases:     ["reactall", "ar"],
         version:     "2.1.0",
-        author:      "乛 Xꫀᥒos ゎ",
+        author:      "Chris",
         category:    "box",
         role:        0,
         countDown:   5,
-        description: { en: "ᴀᴜᴛᴏ-ʀᴇᴀᴄᴛ ᴛᴏ ᴍᴇꜱꜱᴀɢᴇꜱ — ᴀᴅᴍɪɴ-ᴏɴʟʏ ᴏʀ ᴇᴠᴇʀʏᴏɴᴇ ᴍᴏᴅᴇ" },
+        description: { en: "ʀᴇ́ᴀᴄᴛɪᴏɴ ᴀᴜᴛᴏᴍᴀᴛɪǫᴜᴇ ᴀᴜx ᴍᴇꜱꜱᴀɢᴇꜱ — ᴍᴏᴅᴇ ᴀᴅᴍɪɴ ᴏᴜ ᴘᴏᴜʀ ᴛᴏᴜꜱ" },
         guide:       { en: "{pn} on [admin|all]\n{pn} off\n{pn} status" },
     },
 
@@ -73,42 +73,42 @@ module.exports = {
         const prefix   = global.GoatBot.config.prefix;
 
         if (!subCmd || subCmd === "status") {
-            if (!state.active) return message.reply("ℹ️ ᴀᴜᴛᴏ ʀᴇᴀᴄᴛ ɪꜱ ᴄᴜʀʀᴇɴᴛʟʏ OFF.");
+            if (!state.active) return message.reply("ℹ️ ʟ'ᴀᴜᴛᴏ-ʀᴇ́ᴀᴄᴛɪᴏɴ ᴇꜱᴛ ᴀᴄᴛᴜᴇʟʟᴇᴍᴇɴᴛ ᴅᴇ́ꜱᴀᴄᴛɪᴠᴇ́ᴇ.");
             return message.reply(
-                "⚡ ᴀᴜᴛᴏʀᴇᴀᴄᴛ ꜱᴛᴀᴛᴜꜱ\n" +
+                "⚡ ᴇ́ᴛᴀᴛ ᴅᴇ ʟ'ᴀᴜᴛᴏ-ʀᴇ́ᴀᴄᴛɪᴏɴ\n" +
                 "━━━━━━━━━━━━━━━━━━━━\n" +
-                `ꜱᴛᴀᴛᴜꜱ : ON\n` +
-                `ᴍᴏᴅᴇ   : ${state.mode === "all" ? "ᴇᴠᴇʀʏᴏɴᴇ" : "ᴀᴅᴍɪɴ ᴏɴʟʏ"}`
+                `ꜱᴛᴀᴛᴜᴛ : ACTIVÉ\n` +
+                `ᴍᴏᴅᴇ   : ${state.mode === "all" ? "ᴛᴏᴜꜱ ʟᴇꜱ ꜱʜɪɴᴏʙɪꜱ" : "ᴀᴅᴍɪɴɪꜱᴛʀᴀᴛᴇᴜʀꜱ ᴜɴɪǫᴜᴇᴍᴇɴᴛ"}`
             );
         }
 
         if (!isBotAdmin(senderID)) {
-            return message.reply("🔒 ʙᴏᴛ ᴀᴅᴍɪɴ ʀᴇQᴜɪʀᴇᴅ ᴛᴏ ᴛᴏɢɢʟᴇ ᴀᴜᴛᴏʀᴇᴀᴄᴛ.");
+            return message.reply("🔒 ꜱᴇᴜʟ ᴜɴ ᴀᴅᴍɪɴɪꜱᴛʀᴀᴛᴇᴜʀ ᴅᴜ ʙᴏᴛ ᴘᴇᴜᴛ ᴍᴏᴅɪꜰɪᴇʀ ʟ'ᴀᴜᴛᴏ-ʀᴇ́ᴀᴄᴛɪᴏɴ.");
         }
 
         if (subCmd === "on") {
             const mode = modeArg === "admin" ? "admin" : "all";
             setState(threadID, true, mode);
             return message.reply(
-                `🫡⚡ ᴀᴜᴛᴏʀᴇᴀᴄᴛ ON!\n` +
-                `📌 ᴍᴏᴅᴇ: ${mode === "all" ? "ᴇᴠᴇʀʏᴏɴᴇ 🎉" : "ᴀᴅᴍɪɴ ᴏɴʟʏ"}\n\n` +
-                `💡 ᴛɪᴘꜱ:\n` +
-                `   ${prefix}ar on        → ᴇᴠᴇʀʏᴏɴᴇ (ᴅᴇꜰ)\n` +
-                `   ${prefix}ar on admin  → ᴀᴅᴍɪɴ ᴏɴʟʏ`
+                `🫡⚡ ᴀᴜᴛᴏ-ʀᴇ́ᴀᴄᴛɪᴏɴ ᴀᴄᴛɪᴠᴇ́ᴇ !\n` +
+                `📌 ᴍᴏᴅᴇ : ${mode === "all" ? "ᴛᴏᴜꜱ ʟᴇꜱ ꜱʜɪɴᴏʙɪꜱ 🎉" : "ᴀᴅᴍɪɴɪꜱᴛʀᴀᴛᴇᴜʀꜱ ᴜɴɪǫᴜᴇᴍᴇɴᴛ"}\n\n` +
+                `💡 ᴄᴏɴꜱᴇɪʟꜱ :\n` +
+                `   ${prefix}ar on        → ᴘᴏᴜʀ ᴛᴏᴜꜱ (ᴅᴇ́ꜰᴀᴜᴛ)\n` +
+                `   ${prefix}ar on admin  → ᴀᴅᴍɪɴɪꜱᴛʀᴀᴛᴇᴜʀꜱ ᴜɴɪǫᴜᴇᴍᴇɴᴛ`
             );
         }
 
         if (subCmd === "off") {
             setState(threadID, false, state.mode);
-            return message.reply("🤕⚡ ᴀᴜᴛᴏʀᴇᴀᴄᴛ OFF!");
+            return message.reply("🤕⚡ ᴀᴜᴛᴏ-ʀᴇ́ᴀᴄᴛɪᴏɴ ᴅᴇ́ꜱᴀᴄᴛɪᴠᴇ́ᴇ !");
         }
 
         return message.reply(
-            `ᴜꜱᴇ:\n` +
-            `  ${prefix}ar on           → ᴇᴠᴇʀʏᴏɴᴇ\n` +
-            `  ${prefix}ar on admin     → ᴀᴅᴍɪɴ ᴏɴʟʏ\n` +
-            `  ${prefix}ar off          → ᴛᴜʀɴ ᴏꜰꜰ\n` +
-            `  ${prefix}ar status       → ᴄʜᴇᴄᴋ ꜱᴛᴀᴛᴜꜱ`
+            `ᴜᴛɪʟɪꜱᴀᴛɪᴏɴ :\n` +
+            `  ${prefix}ar on           → ᴘᴏᴜʀ ᴛᴏᴜꜱ\n` +
+            `  ${prefix}ar on admin     → ᴀᴅᴍɪɴɪꜱᴛʀᴀᴛᴇᴜʀꜱ ᴜɴɪǫᴜᴇᴍᴇɴᴛ\n` +
+            `  ${prefix}ar off          → ᴅᴇ́ꜱᴀᴄᴛɪᴠᴇʀ\n` +
+            `  ${prefix}ar status       → ᴠᴇ́ʀɪꜰɪᴇʀ ʟ'ᴇ́ᴛᴀᴛ`
         );
     },
 
