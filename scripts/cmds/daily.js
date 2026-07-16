@@ -5,7 +5,7 @@ module.exports = {
     config: {
         name: "daily",
         version: "1.0.0",
-        author: "S1F4T",
+        author: "chris st",
         countDown: 5,
         role: 0,
         description: {
