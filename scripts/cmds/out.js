@@ -1,30 +1,44 @@
+"use strict";
+
 const axios = require("axios");
 const fs = require("fs-extra");
 const request = require("request");
+
 module.exports = {
 	config: {
 		name: "out",
-		aliases: ["vag","urjaa"],
-		version: "1.0",
-		author: "SiFu",
+		aliases: ["vag", "urjaa", "quitter"],
+		version: "1.0.0",
+		author: "Chris",
 		countDown: 5,
 		role: 2,
-		shortDescription: "bot will leave gc",
-		longDescription: "",
+		description: { en: "ꜰᴀɪʀᴇ ǫᴜɪᴛᴛᴇʀ ʟᴇ ʙᴏᴛ ᴅ'ᴜɴ ɢʀᴏᴜᴘᴇ" },
 		category: "admin",
 		guide: {
-			vi: "{pn} [tid,blank]",
-			en: "{pn} [tid,blank]"
+			en: "   {pn}        — ǫᴜɪᴛᴛᴇʀ ʟᴇ ɢʀᴏᴜᴘᴇ ᴀᴄᴛᴜᴇʟ\n" +
+			    "   {pn} <ᴛɪᴅ>  — ǫᴜɪᴛᴛᴇʀ ᴜɴ ɢʀᴏᴜᴘᴇ ꜱᴘᴇ́ᴄɪꜰɪǫᴜᴇ ᴠɪᴀ ꜱᴏɴ ɪᴅ"
 		}
 	},
 
-	onStart: async function ({ api,event,args, message }) {
- var id;
- if (!args.join(" ")) {
- id = event.threadID;
- } else {
- id = parseInt(args.join(" "));
- }
- return api.sendMessage('✦━━━━━━━━━━━━━━━✦\n📛 𝗵𝗼 𝗷𝗮𝗰𝗰𝗶 𝘁𝘂𝗶 𝘁𝗵𝗮𝗸 𝗵𝗮𝗹𝗮 🐤\n✦━━━━━━━━━━━━━━━✦', id, () => api.removeUserFromGroup(api.getCurrentUserID(), id))
+	onStart: async function ({ api, event, args }) {
+		const { threadID, messageID } = event;
+		let id;
+
+		if (!args.join(" ")) {
+			id = threadID;
+		} else {
+			id = args.join(" ").trim();
 		}
-	};
+
+		return api.sendMessage(
+			[
+				"✦━━━━━━━━━━━━━━━━━━━✦",
+				"🌿 ǫᴜᴇ ʟᴇ ᴠᴇɴᴛ ᴠᴏᴜꜱ ᴘʀᴏᴛᴇ̀ɢᴇ, ꜱʜɪɴᴏʙɪꜱ…",
+				"   ɪʟ ᴇꜱᴛ ᴛᴇᴍᴘꜱ ᴘᴏᴜʀ ᴍᴏɪ ᴅᴇ ᴘᴀʀᴛɪʀ.",
+				"✦━━━━━━━━━━━━━━━━━━━✦"
+			].join("\n"),
+			id,
+			() => api.removeUserFromGroup(api.getCurrentUserID(), id)
+		);
+	}
+};
