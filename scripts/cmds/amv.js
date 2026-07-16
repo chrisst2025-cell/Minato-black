@@ -13,12 +13,12 @@ module.exports = {
         name:        "amv",
         aliases:     ["AMV", "animemv", "animevideo", "animeamv"],
         version:     "4.0.0",
-        author:      "SIFAT",
+        author:      "Chris",
         category:    "media",
         role:        0,
         countDown:   10,
-        description: { en: "Search & download Anime Music Videos (AMV) in HD quality." },
-        guide:       { en: "{pn} [query|URL] [-q 360|480|720|1080] [-list]\n{pn} pick <n>" },
+        description: { en: "ʀᴇᴄʜᴇʀᴄʜᴇʀ ᴇᴛ ᴛᴇ́ʟᴇ́ᴄʜᴀʀɢᴇʀ ᴅᴇꜱ AMV ᴇɴ ǫᴜᴀʟɪᴛᴇ́ ʜᴅ" },
+        guide:       { en: "{pn} [ʀᴇᴄʜᴇʀᴄʜᴇ|ᴜʀʟ] [-q 360|480|720|1080] [-list]\n{pn} pick <ɴᴜᴍᴇ́ʀᴏ>" },
     },
 
     onStart: async function ({ args, event, message, api: botApi }) {
@@ -52,24 +52,24 @@ module.exports = {
 
         if (mode === "help") {
             return api.safeReply(ctx, [
-                "🎥 ᴀᴍᴠ — ʜᴇʟᴘ",
+                "🎥 ᴀᴍᴠ — ᴀɪᴅᴇ ᴅᴜ ᴍɪɴᴀᴛᴏ",
                 "━━━━━━━━━━━━━━━━━━━━",
-                "amv <query>              → ꜰɪɴᴅ ᴀɴᴅ ᴅᴏᴡɴʟᴏᴀᴅ ʙᴇꜱᴛ AMV",
-                "amv <query> -list        → ᴛᴏᴘ 6 ʀᴇꜱᴜʟᴛꜱ ᴛᴏ ᴘɪᴄᴋ",
-                "amv pick <n>             → ᴅᴏᴡɴʟᴏᴀᴅ #ɴ ꜰʀᴏᴍ ʟɪꜱᴛ",
-                "amv <YouTube URL>        → ᴅɪʀᴇᴄᴛ ᴅᴏᴡɴʟᴏᴀᴅ",
-                "amv -q 360|480|720|1080  → ꜱᴇᴛ ǫᴜᴀʟɪᴛʏ",
+                "amv <ʀᴇᴄʜᴇʀᴄʜᴇ>          → ᴛʀᴏᴜᴠᴇʀ ᴇᴛ ᴛᴇ́ʟᴇ́ᴄʜᴀʀɢᴇʀ ʟᴇ ᴍᴇɪʟʟᴇᴜʀ AMV",
+                "amv <ʀᴇᴄʜᴇʀᴄʜᴇ> -list    → ᴀꜰꜰɪᴄʜᴇʀ ʟᴇꜱ 6 ᴍᴇɪʟʟᴇᴜʀꜱ ʀᴇ́ꜱᴜʟᴛᴀᴛꜱ",
+                "amv pick <ɴ>             → ᴛᴇ́ʟᴇ́ᴄʜᴀʀɢᴇʀ ʟᴇ ɴᴜᴍᴇ́ʀᴏ ɴ ᴅᴇ ʟᴀ ʟɪꜱᴛᴇ",
+                "amv <ᴜʀʟ ʏᴏᴜᴛᴜʙᴇ>        → ᴛᴇ́ʟᴇ́ᴄʜᴀʀɢᴇʀ ᴅɪʀᴇᴄᴛᴇᴍᴇɴᴛ",
+                "amv -q 360|480|720|1080  → ᴅᴇ́ꜰɪɴɪʀ ʟᴀ ǫᴜᴀʟɪᴛᴇ́ ᴅᴜ ᴠɪꜱᴜᴇʟ",
                 "",
-                "ᴀᴜᴛᴏ-ꜱᴇᴀʀᴄʜᴇꜱ 'ᴀɴɪᴍᴇ AMV' ᴋᴇʏᴡᴏʀᴅ.",
-                "ᴀᴜᴛᴏ-ꜰᴀʟʟʙᴀᴄᴋ ɪꜰ ꜰɪʟᴇ ᴛᴏᴏ ʟᴀʀɢᴇ ꜰᴏʀ Messenger.",
+                "ᴀᴊᴏᴜᴛᴇ ᴀᴜᴛᴏᴍᴀᴛɪǫᴜᴇᴍᴇɴᴛ 'ᴀɴɪᴍᴇ AMV' ᴀ̀ ʟᴀ ʀᴇᴄʜᴇʀᴄʜᴇ.",
+                "ʀᴇ́ᴅᴜᴄᴛɪᴏɴ ᴀᴜᴛᴏᴍᴀᴛɪǫᴜᴇ ꜱɪ ʟᴇ ᴘᴀʀᴄʜᴇᴍɪɴ ᴇꜱᴛ ᴛʀᴏᴘ ʟᴏᴜʀᴅ.",
             ].join("\n"));
         }
 
         if (!query && mode === "search") {
             return api.safeReply(ctx, [
-                "⚠️ ᴘʀᴏᴠɪᴅᴇ ᴀɴ AMV ǫᴜᴇʀʏ ᴏʀ YouTube ʟɪɴᴋ.",
+                "⚠️ ᴠᴇᴜɪʟʟᴇᴢ ꜰᴏᴜʀɴɪʀ ᴜɴᴇ ʀᴇᴄʜᴇʀᴄʜᴇ ᴅ'AMV ᴏᴜ ᴜɴ ʟɪᴇɴ ʏᴏᴜᴛᴜʙᴇ, ꜱʜɪɴᴏʙɪ.",
                 "",
-                "ᴇxᴀᴍᴘʟᴇꜱ:",
+                "ᴇxᴇᴍᴘʟᴇꜱ:",
                 "  amv naruto",
                 "  amv demon slayer -q 720",
                 "  amv attack on titan -list",
@@ -97,10 +97,10 @@ module.exports = {
 
             if (mode === "pick") {
                 const recalled = api.recallSearch("amv", ctx);
-                if (!recalled) return api.safeReply(ctx, "❌ ɴᴏ ᴀᴄᴛɪᴠᴇ ʟɪꜱᴛ ꜰᴏᴜɴᴅ.\nRun:  amv <query> -list  first.");
+                if (!recalled) return api.safeReply(ctx, "❌ ᴀᴜᴄᴜɴᴇ ʟɪꜱᴛᴇ ᴀᴄᴛɪᴠᴇ ɴ'ᴀ ᴇ́ᴛᴇ́ ᴛʀᴏᴜᴠᴇ́ᴇ.\nᴇxᴇ́ᴄᴜᴛᴇᴢ ᴅ'ᴀʙᴏʀᴅ : amv <ʀᴇᴄʜᴇʀᴄʜᴇ> -list");
                 const idx = pickNum - 1;
                 if (idx < 0 || idx >= recalled.results.length) {
-                    return api.safeReply(ctx, `❌ ɪɴᴠᴀʟɪᴅ ɴᴜᴍʙᴇʀ. ᴄʜᴏᴏꜱᴇ 1–${recalled.results.length}.`);
+                    return api.safeReply(ctx, `❌ ᴄʜᴏɪx ɪɴᴠᴀʟɪᴅᴇ. ᴠᴇᴜɪʟʟᴇᴢ ᴄʜᴏɪꜱɪʀ ᴜɴ ɴᴏᴍʙʀᴇ ᴇɴᴛʀᴇ 1 ᴇᴛ ${recalled.results.length}.`);
                 }
                 const pick = recalled.results[idx];
                 videoUrl      = api.normalizeYouTubeUrl(pick.url);
@@ -110,13 +110,13 @@ module.exports = {
                 api.clearPicker("amv", ctx);
                 react("📥");
                 await sendProgress(
-                    `📥 ᴅᴏᴡɴʟᴏᴀᴅɪɴɢ AMV...\n\n🎥 ${videoTitle}\n📺 ǫᴜᴀʟɪᴛʏ: ${quality}ᴘ\n\n⏳ ᴘʟᴇᴀꜱᴇ ᴡᴀɪᴛ...`
+                    `📥 ᴘʀᴇ́ᴘᴀʀᴀᴛɪᴏɴ ᴅᴜ ᴛᴇ́ʟᴇ́ᴄʜᴀʀɢᴇᴍᴇɴᴛ ᴅᴇ ʟ'AMV...\n\n🎥 ${videoTitle}\n📺 ǫᴜᴀʟɪᴛᴇ́ : ${quality}ᴘ\n\n⏳ ᴠᴇᴜɪʟʟᴇᴢ ᴘᴀᴛɪᴇɴᴛᴇʀ, ᴊᴇ ꜰᴀɪꜱ ᴀᴜ ᴘʟᴜꜱ ᴠɪᴛᴇ...`
                 );
 
             } else if (mode === "list") {
                 react("🔍");
                 const searchQuery = `${query} anime AMV`;
-                await sendProgress(`🔍 ꜱᴇᴀʀᴄʜɪɴɢ AMVꜱ...\n"${searchQuery}"\n⏳ ᴘʟᴇᴀꜱᴇ ᴡᴀɪᴛ...`);
+                await sendProgress(`🔍 ʀᴇᴄʜᴇʀᴄʜᴇ ᴅᴇꜱ AMV ᴇɴ ᴄᴏᴜʀꜱ...\n"${searchQuery}"\n⏳ ᴠᴇᴜɪʟʟᴇᴢ ᴘᴀᴛɪᴇɴᴛᴇʀ, ꜱʜɪɴᴏʙɪ...`);
                 const imgPath = path.join(api.config.CACHE_DIR, `amv_list_${Date.now()}.png`);
                 const imgResult = await api.downloadSearchImage(
                     "/api/video/search-image",
@@ -126,7 +126,7 @@ module.exports = {
                 delProgress();
                 if (!imgResult.results?.length) {
                     react("❌");
-                    return api.safeReply(ctx, `❌ ɴᴏ AMV ꜰᴏᴜɴᴅ ꜰᴏʀ "${query}".`);
+                    return api.safeReply(ctx, `❌ ᴀᴜᴄᴜɴ AMV ᴛʀᴏᴜᴠᴇ́ ᴘᴏᴜʀ "${query}".`);
                 }
                 api.rememberSearch("amv", ctx, imgResult.results, "video");
                 react("✅");
@@ -138,17 +138,17 @@ module.exports = {
                 if (api.isYouTubeUrl(query)) {
                     videoUrl = api.normalizeYouTubeUrl(query);
                     react("📥");
-                    await sendProgress(`📥 ꜰᴇᴛᴄʜɪɴɢ AMV ꜰʀᴏᴍ ʟɪɴᴋ...\n📺 ǫᴜᴀʟɪᴛʏ: ${quality}ᴘ\n⏳ ᴘʟᴇᴀꜱᴇ ᴡᴀɪᴛ...`);
+                    await sendProgress(`📥 ʀᴇ́ᴄᴜᴘᴇ́ʀᴀᴛɪᴏɴ ᴅᴇ ʟ'AMV ᴅᴇᴘᴜɪꜱ ʟᴇ ʟɪᴇɴ...\n📺 ǫᴜᴀʟɪᴛᴇ́ : ${quality}ᴘ\n⏳ ᴠᴇᴜɪʟʟᴇᴢ ᴘᴀᴛɪᴇɴᴛᴇʀ...`);
                 } else {
                     react("🎥");
                     const searchQuery = `${query} anime AMV`;
-                    await sendProgress(`🎥 ꜱᴇᴀʀᴄʜɪɴɢ ꜰᴏʀ AMV...\n"${searchQuery}"\n⏳ ᴘʟᴇᴀꜱᴇ ᴡᴀɪᴛ...`);
+                    await sendProgress(`🎥 ʀᴇᴄʜᴇʀᴄʜᴇ ᴅ'ᴜɴ ʙᴇʟ AMV...\n"${searchQuery}"\n⏳ ᴠᴇᴜɪʟʟᴇᴢ ᴘᴀᴛɪᴇɴᴛᴇʀ, ꜱʜɪɴᴏʙɪ...`);
                     const data    = await api.httpGetJson("/api/music/search", { q: searchQuery, limit: 1 });
                     const results = data?.results || [];
                     if (!results.length || !results[0].url) {
                         delProgress();
                         react("❌");
-                        return api.safeReply(ctx, `❌ ɴᴏ AMV ꜰᴏᴜɴᴅ ꜰᴏʀ "${query}". ᴛʀʏ ᴀ ᴅɪꜰꜰᴇʀᴇɴᴛ ǫᴜᴇʀʏ.`);
+                        return api.safeReply(ctx, `❌ ᴀᴜᴄᴜɴ AMV ᴛʀᴏᴜᴠᴇ́ ᴘᴏᴜʀ "${query}". ᴇꜱꜱᴀʏᴇᴢ ᴅ'ᴀᴜᴛʀᴇꜱ ᴍᴏᴛꜱ-ᴄʟᴇ́ꜱ.`);
                     }
                     const top     = results[0];
                     videoUrl      = api.normalizeYouTubeUrl(top.url);
@@ -158,8 +158,8 @@ module.exports = {
                     delProgress();
                     react("📥");
                     await sendProgress(
-                        `📥 ᴅᴏᴡɴʟᴏᴀᴅɪɴɢ AMV...\n\n🎥 ${videoTitle}\n` +
-                        `👤 ${videoUploader || "?"}\n📺 ǫᴜᴀʟɪᴛʏ: ${quality}ᴘ\n\n⏳ ᴘʟᴇᴀꜱᴇ ᴡᴀɪᴛ...`
+                        `📥 ᴘʀᴇ́ᴘᴀʀᴀᴛɪᴏɴ ᴅᴜ ᴛᴇ́ʟᴇ́ᴄʜᴀʀɢᴇᴍᴇɴᴛ ᴅᴇ ʟ'AMV...\n\n🎥 ${videoTitle}\n` +
+                        `👤 ᴄʜᴀɪ̂ɴᴇ : ${videoUploader || "?"}\n📺 ǫᴜᴀʟɪᴛᴇ́ : ${quality}ᴘ\n\n⏳ ᴠᴇᴜɪʟʟᴇᴢ ᴘᴀᴛɪᴇɴᴛᴇʀ...`
                     );
                 }
             }
@@ -206,7 +206,7 @@ module.exports = {
                     if (i === ladder.length - 1) {
                         delProgress();
                         react("❌");
-                        return api.safeReply(ctx, "❌ ᴅᴏᴡɴʟᴏᴀᴅ ꜰᴀɪʟᴇᴅ — ᴇᴍᴘᴛʏ ꜰɪʟᴇ.");
+                        return api.safeReply(ctx, "❌ ʟᴇ ᴛᴇ́ʟᴇ́ᴄʜᴀʀɢᴇᴍᴇɴᴛ ᴀ ᴇ́ᴄʜᴏᴜᴇ́ — ʟᴇ ꜰɪᴄʜɪᴇʀ ᴇꜱᴛ ᴠɪᴅᴇ.");
                     }
                     continue;
                 }
@@ -221,7 +221,7 @@ module.exports = {
 
                 if (i < ladder.length - 1) {
                     delProgress();
-                    await sendProgress(`⚠️ ${tryQ}ᴘ = ${sizeMB.toFixed(1)} ᴍʙ → ᴛʀʏɪɴɢ ${ladder[i + 1]}ᴘ...`);
+                    await sendProgress(`⚠️ ${tryQ}ᴘ = ${sizeMB.toFixed(1)} ᴍʙ → ʀᴇ́ᴅᴜᴄᴛɪᴏɴ ᴇɴ ᴄᴏᴜʀꜱ ᴠᴇʀꜱ ${ladder[i + 1]}ᴘ...`);
                 }
             }
 
@@ -230,8 +230,8 @@ module.exports = {
             if (!finalResult) {
                 react("❌");
                 return api.safeReply(ctx,
-                    `❌ ᴀʟʟ ǫᴜᴀʟɪᴛɪᴇꜱ ᴇxᴄᴇᴇᴅ Messenger ʟɪᴍɪᴛ (${api.config.MAX_FILE_MB} ᴍʙ).\n` +
-                    `ᴛʀʏ ᴀ ꜱʜᴏʀᴛᴇʀ ᴠɪᴅᴇᴏ ᴏʀ ᴜꜱᴇ ᴀ ʟᴏᴡᴇʀ ǫᴜᴀʟɪᴛʏ.`
+                    `❌ ᴛᴏᴜᴛᴇꜱ ʟᴇꜱ ǫᴜᴀʟɪᴛᴇ́ꜱ ᴅᴇ́ᴘᴀꜱꜱᴇɴᴛ ʟᴀ ʟɪᴍɪᴛᴇ ᴅᴇ ᴍᴇꜱꜱᴇɴɢᴇʀ (${api.config.MAX_FILE_MB} ᴍʙ).\n` +
+                    `ᴠᴇᴜɪʟʟᴇᴢ ᴄʜᴏɪꜱɪʀ ᴜɴᴇ ᴠɪᴅᴇ́ᴏ ᴘʟᴜꜱ ᴄᴏᴜʀᴛᴇ ᴏᴜ ᴜɴᴇ ǫᴜᴀʟɪᴛᴇ́ ɪɴꜰᴇ́ʀɪᴇᴜʀᴇ.`
                 );
             }
 
@@ -239,15 +239,15 @@ module.exports = {
             react("✅");
             await api.safeReply(ctx, {
                 body: [
-                    "🎥 AMV ᴅᴏᴡɴʟᴏᴀᴅᴇᴅ",
+                    "🎥 ᴀᴍᴠ ʀᴇ́ᴄᴜᴘᴇ́ʀᴇ́ ᴀᴠᴇᴄ ꜱᴜᴄᴄᴇ̀ꜱ",
                     "━━━━━━━━━━━━━━━━━━━━",
-                    `🎥 ᴛɪᴛʟᴇ    : ${videoTitle    || "?"}`,
-                    videoUploader ? `👤 ᴄʜᴀɴɴᴇʟ   : ${videoUploader}` : null,
-                    videoDuration ? `⏱ ᴅᴜʀᴀᴛɪᴏɴ  : ${api.formatDuration(videoDuration)}` : null,
-                    `📺 ǫᴜᴀʟɪᴛʏ  : ${finalQuality}ᴘ${fellBack ? ` (ꜰᴀʟʟʙᴀᴄᴋ ꜰʀᴏᴍ ${quality}ᴘ)` : ""}`,
-                    `🔊 ᴀᴜᴅɪᴏ    : ✅ ɪɴᴄʟᴜᴅᴇᴅ`,
-                    `📦 ꜱɪᴢᴇ     : ${api.formatBytes(finalResult.size)}`,
-                    wasCached ? `⚡ ꜱᴏᴜʀᴄᴇ   : ᴄᴀᴄʜᴇ ʜɪᴛ ⚡` : `⚡ ᴛɪᴍᴇ     : ${api.formatElapsed(finalElapsed)}`,
+                    `🎥 ᴛɪᴛʀᴇ      : ${videoTitle    || "?"}`,
+                    videoUploader ? `👤 ᴄʜᴀɪ̂ɴᴇ     : ${videoUploader}` : null,
+                    videoDuration ? `⏱ ᴅᴜʀᴇ́ᴇ      : ${api.formatDuration(videoDuration)}` : null,
+                    `📺 ǫᴜᴀʟɪᴛᴇ́    : ${finalQuality}ᴘ${fellBack ? ` (ᴀᴅᴀᴘᴛᴇ́ ᴅᴇᴘᴜɪꜱ ${quality}ᴘ)` : ""}`,
+                    `🔊 ᴀᴜᴅɪᴏ      : ✅ ᴀᴄᴛɪꜰ`,
+                    `📦 ᴛᴀɪʟʟᴇ     : ${api.formatBytes(finalResult.size)}`,
+                    wasCached ? `⚡ ꜱᴏᴜʀᴄᴇ     : ᴘᴀʀᴄʜᴇᴍɪɴ ᴄᴀᴄʜᴇ́ ⚡` : `⚡ ᴠɪᴛᴇꜱꜱᴇ    : ${api.formatElapsed(finalElapsed)}`,
                 ].filter(Boolean).join("\n"),
                 attachment: fs.createReadStream(finalResult.path),
             });
@@ -260,3 +260,4 @@ module.exports = {
         }
     },
 };
+                
