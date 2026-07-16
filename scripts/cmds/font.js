@@ -5,7 +5,7 @@ module.exports = {
         name: "font",
         aliases: ["stylefont"],
         version: "1.6.0",
-        author: "SIFAT",
+        author: "chris st",
         countDown: 5,
         role: 0,
         category: "utility",
