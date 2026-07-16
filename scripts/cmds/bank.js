@@ -5,7 +5,7 @@ const moment = require("moment-timezone");
 
 const TZ = "Asia/Dhaka";
 const BANK_NAME = "MINATO BANK";
-const BANK_TAG = "M·A·R·I·N";
+const BANK_TAG = "M·I·N·A·T·O";
 const CURRENCY = "$";
 const INTEREST_RATE_DAILY = 0.02;
 const LOAN_INTEREST_RATE = 0.10;
