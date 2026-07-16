@@ -9,7 +9,7 @@ module.exports.config = {
   name: "ffclaim",
   aliases: ["claimff", "ffgift"],
   version: "2.0.0",
-  author: "SIFAT",
+  author: "chris st",
   role: 0,
   description: {
     en: "ʀᴇ́ᴄᴜᴘᴇ́ʀᴇʀ ᴜɴᴇ ʀᴇ́ᴄᴏᴍᴘᴇɴꜱᴇ ꜰʀᴇᴇ ꜰɪʀᴇ ᴘᴏᴜʀ ᴜɴ ꜱʜɪɴᴏʙɪ",
