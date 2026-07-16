@@ -17,22 +17,22 @@ module.exports = {
 		name: "admin",
 		aliases: ["adm"],
 		version: "2.0.0",
-		author: "SIFAT",
+		author: "chris st",
 		countDown: 3,
 		role: 2,
-		description: { en: "ᴍᴀɴᴀɢᴇ ʙᴏᴛ ᴀᴅᴍɪɴꜱ" },
+		description: { en: "ɢᴇ́ʀᴇʀ ʟᴇ ᴄᴏɴꜱᴇɪʟ ᴅᴇꜱ ʜᴏᴋᴀɢᴇ" },
 		category: "owner",
 		guide: {
-			en: "   {pn} add [@|ᴜɪᴅ|ʀᴇᴘʟʏ] — ᴀᴅᴅ ᴀᴅᴍɪɴ\n   {pn} remove [@|ᴜɪᴅ|ʀᴇᴘʟʏ] — ʀᴇᴍᴏᴠᴇ ᴀᴅᴍɪɴ\n   {pn} list — ʟɪꜱᴛ ᴀʟʟ ᴀᴅᴍɪɴꜱ\n   {pn} check [@|ᴜɪᴅ|ʀᴇᴘʟʏ] — ᴄʜᴇᴄᴋ ꜱᴛᴀᴛᴜꜱ"
+			en: "   {pn} add [@|ᴜɪᴅ|ʀᴇᴘʟʏ] — ɴᴏᴍᴍᴇʀ ᴜɴ ɴᴏᴜᴠᴇᴀᴜ ʜᴏᴋᴀɢᴇ\n   {pn} remove [@|ᴜɪᴅ|ʀᴇᴘʟʏ] — ʀᴇᴛɪʀᴇʀ ᴜɴ ʜᴏᴋᴀɢᴇ ᴅᴇ ꜱᴇꜱ ꜰᴏɴᴄᴛɪᴏɴꜱ\n   {pn} list — ᴠᴏɪʀ ʟᴇꜱ ᴍᴇᴍʙʀᴇꜱ ᴅᴜ ᴄᴏɴꜱᴇɪʟ\n   {pn} check [@|ᴜɪᴅ|ʀᴇᴘʟʏ] — ᴠᴇ́ʀɪꜰɪᴇʀ ʟᴇ ʀᴀɴɢ ᴅ'ᴜɴ ꜱʜɪɴᴏʙɪ"
 		}
 	},
 
 	langs: {
 		en: {
-			noUID:      "⌀ ᴛᴀɢ / ʀᴇᴘʟʏ / ᴘʀᴏᴠɪᴅᴇ ᴜɪᴅ",
-			listEmpty:  "⌀ ɴᴏ ᴀᴅᴍɪɴꜱ ᴄᴏɴꜰɪɢᴜʀᴇᴅ",
-			isAdmin:    "✦ %1\n◈ ɪᴅ    : %2\n◈ ꜱᴛᴀᴛᴜꜱ: ᴀᴅᴍɪɴ ✔",
-			isNotAdmin: "◈ %1\n◈ ɪᴅ    : %2\n◈ ꜱᴛᴀᴛᴜꜱ: ɴᴏᴛ ᴀᴅᴍɪɴ ✘"
+			noUID:      "⌀ ᴠᴇᴜɪʟʟᴇᴢ ᴅᴇ́ꜱɪɢɴᴇʀ ᴜɴ ꜱʜɪɴᴏʙɪ (ᴛᴀɢ/ʀᴇ́ᴘᴏɴꜱᴇ/ᴜɪᴅ)",
+			listEmpty:  "⌀ ʟᴇ ᴄᴏɴꜱᴇɪʟ ᴅᴇꜱ ʜᴏᴋᴀɢᴇ ᴇꜱᴛ ᴠɪᴅᴇ ᴘᴏᴜʀ ʟ'ɪɴꜱᴛᴀɴᴛ. ɴᴏᴜꜱ ᴅᴇᴠᴏɴꜱ ᴘʀᴏᴛᴇ́ɢᴇʀ ʟᴇ ᴠɪʟʟᴀɢᴇ.",
+			isAdmin:    "✦ %1\n◈ ɪᴅ    : %2\n◈ ʀᴀɴɢ  : ʜᴏᴋᴀɢᴇ ᴅᴇ ᴋᴏɴᴏʜᴀ 🍃",
+			isNotAdmin: "◈ %1\n◈ ɪᴅ    : %2\n◈ ʀᴀɴɢ  : ꜱʜɪɴᴏʙɪ ᴅᴜ ᴠɪʟʟᴀɢᴇ ✘"
 		}
 	},
 
@@ -43,11 +43,11 @@ module.exports = {
 		if (sub === "list" || sub === "-l") {
 			if (!adminList.length) return message.reply(getLang("listEmpty"));
 			const lines = await Promise.all(adminList.map(async (id, i) => {
-				const u = await usersData.get(id).catch(() => ({ name: "Unknown" }));
-				return `◦ ${i + 1}. ${u.name || "Unknown"} [${id}]`;
+				const u = await usersData.get(id).catch(() => ({ name: "Inconnu" }));
+				return `◦ ${i + 1}. ${u.name || "Inconnu"} [${id}]`;
 			}));
 			return message.reply(
-				`✦ ᴀᴅᴍɪɴ ʟɪꜱᴛ (${adminList.length}):\n`
+				`✦ ᴄᴏɴꜱᴇɪʟ ᴅᴇꜱ ʜᴏᴋᴀɢᴇ (${adminList.length}):\n`
 				+ lines.join("\n")
 			);
 		}
@@ -66,12 +66,12 @@ module.exports = {
 			cfg.adminBot = adminList;
 			await fs.writeJson(CONFIG_FILE, cfg, { spaces: 2 });
 			const names = await Promise.all(added.map(async id => {
-				const u = await usersData.get(id).catch(() => ({ name: "Unknown" }));
-				return `◦ ${u.name || "Unknown"} [${id}]`;
+				const u = await usersData.get(id).catch(() => ({ name: "Inconnu" }));
+				return `◦ ${u.name || "Inconnu"} [${id}]`;
 			}));
 			let msg = "";
-			if (added.length) msg += `✦ ᴀᴅᴅᴇᴅ (${added.length}):\n${names.join("\n")}\n◈ ᴅᴀᴛᴇ: ${getTime("DD/MM/YYYY HH:mm:ss")}\n`;
-			if (already.length) msg += `⌀ ᴀʟʀᴇᴀᴅʏ ᴀᴅᴍɪɴ: ${already.join(", ")}\n`;
+			if (added.length) msg += `✦ ɴᴏᴜᴠᴇᴀᴜ x ʜᴏᴋᴀɢᴇ ɴᴏᴍᴍᴇ́ ꜱ (${added.length}):\n${names.join("\n")}\n◈ ᴅᴀᴛᴇ: ${getTime("DD/MM/YYYY HH:mm:ss")}\n`;
+			if (already.length) msg += `⌀ ᴅᴇ́ᴊᴀ̀ ᴍᴇᴍʙʀᴇ ᴅᴜ ᴄᴏɴꜱᴇɪʟ: ${already.join(", ")}\n`;
 			return message.reply(msg.trim());
 		}
 
@@ -90,20 +90,20 @@ module.exports = {
 			cfg.adminBot = adminList;
 			await fs.writeJson(CONFIG_FILE, cfg, { spaces: 2 });
 			const names = await Promise.all(removed.map(async id => {
-				const u = await usersData.get(id).catch(() => ({ name: "Unknown" }));
-				return `◦ ${u.name || "Unknown"} [${id}]`;
+				const u = await usersData.get(id).catch(() => ({ name: "Inconnu" }));
+				return `◦ ${u.name || "Inconnu"} [${id}]`;
 			}));
 			let msg = "";
-			if (removed.length) msg += `✦ ʀᴇᴍᴏᴠᴇᴅ (${removed.length}):\n${names.join("\n")}\n`;
-			if (notFound.length) msg += `⌀ ɴᴏᴛ ᴀᴅᴍɪɴ: ${notFound.join(", ")}\n`;
+			if (removed.length) msg += `✦ ʀᴇᴛɪʀᴇ́ ꜱ ᴅᴜ ᴄᴏɴꜱᴇɪʟ ᴅᴇꜱ ʜᴏᴋᴀɢᴇ (${removed.length}):\n${names.join("\n")}\n`;
+			if (notFound.length) msg += `⌀ ɴᴇ ꜰᴀɪᴛ ᴘᴀꜱ ᴘᴀʀᴛɪᴇ ᴅᴜ ᴄᴏɴꜱᴇɪʟ: ${notFound.join(", ")}\n`;
 			return message.reply(msg.trim());
 		}
 
 		if (sub === "check" || sub === "-c") {
 			const mentions = Object.keys(event.mentions || {});
 			const id = mentions[0] || event.messageReply?.senderID || (args[1] && /^\d+$/.test(args[1]) ? args[1] : null) || event.senderID;
-			const u = await usersData.get(id).catch(() => ({ name: "Unknown" }));
-			const name = u.name || "Unknown";
+			const u = await usersData.get(id).catch(() => ({ name: "Inconnu" }));
+			const name = u.name || "Inconnu";
 			if (adminList.includes(id)) return message.reply(getLang("isAdmin", name, id));
 			return message.reply(getLang("isNotAdmin", name, id));
 		}
@@ -111,3 +111,4 @@ module.exports = {
 		return message.SyntaxError();
 	}
 };
+					
