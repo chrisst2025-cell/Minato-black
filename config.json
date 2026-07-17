@@ -41,7 +41,7 @@
   "notes_premiumUsers": "List of user IDs with premium access (role 3)",
   "notes_devUsers": "List of developer IDs with full access (role 4)",
   "whiteListMode": {
-    "enable": true,
+    "enable": false,
     "whiteListIds": [
       "100087331405932"
     ],
