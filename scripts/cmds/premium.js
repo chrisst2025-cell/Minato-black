@@ -1,3 +1,5 @@
+"use strict";
+
 const fs = require("fs-extra");
 const path = require("path");
 
@@ -8,8 +10,8 @@ function saveConfig(cfg) {
 }
 
 function fmtDate(ts) {
-	if (!ts) return "ɴᴇᴠᴇʀ";
-	return new Date(ts).toLocaleString("en-GB", { timeZone: "Asia/Dhaka", hour12: false }).replace(",", "");
+	if (!ts) return "ᴊᴀᴍᴀɪꜱ";
+	return new Date(ts).toLocaleString("fr-FR", { timeZone: "Europe/Paris", hour12: false }).replace(",", "");
 }
 
 function daysToMs(d) {
@@ -29,27 +31,27 @@ module.exports = {
 		name: "premium",
 		aliases: ["prem"],
 		version: "2.0.0",
-		author: "SIFAT",
+		author: "Chris",
 		countDown: 3,
 		role: 2,
-		description: { en: "ᴍᴀɴᴀɢᴇ ᴘʀᴇᴍɪᴜᴍ ᴜꜱᴇʀꜱ" },
+		description: { en: "ɢᴇ́ʀᴇʀ ʟᴇꜱ ᴜᴛɪʟɪꜱᴀᴛᴇᴜʀꜱ ᴘʀᴇᴍɪᴜᴍ ᴅᴜ ʙᴏᴛ" },
 		category: "owner",
-		guide: { en: "{pn} add [@|ᴜɪᴅ|ʀᴇᴘʟʏ] [ᴅᴀʏꜱ]\n{pn} remove [@|ᴜɪᴅ|ʀᴇᴘʟʏ]\n{pn} list | clear\n{pn} check [@|ᴜɪᴅ|ʀᴇᴘʟʏ]\n{pn} expire [@|ᴜɪᴅ] <ᴅᴀʏꜱ>" }
+		guide: { en: "{pn} add [@|ᴜɪᴅ|ʀᴇᴘʟʏ] [ᴊᴏᴜʀꜱ]\n{pn} remove [@|ᴜɪᴅ|ʀᴇᴘʟʏ]\n{pn} list | clear\n{pn} check [@|ᴜɪᴅ|ʀᴇᴘʟʏ]\n{pn} expire [@|ᴜɪᴅ] <ᴊᴏᴜʀꜱ>" }
 	},
 
 	langs: {
 		en: {
-			noId:        "⌀ ᴛᴀɢ / ʀᴇᴘʟʏ / ᴘʀᴏᴠɪᴅᴇ ᴜɪᴅ",
-			noDays:      "⌀ ᴇɴᴛᴇʀ ᴠᴀʟɪᴅ ɴᴜᴍʙᴇʀ ᴏꜰ ᴅᴀʏꜱ",
-			added:       "✦ ᴘʀᴇᴍɪᴜᴍ ɢʀᴀɴᴛᴇᴅ\n◈ ᴜꜱᴇʀ  : %1\n◈ ᴇxᴘɪʀʏ: %2",
-			alreadyPrem: "⌀ %1 ɪꜱ ᴀʟʀᴇᴀᴅʏ ᴘʀᴇᴍɪᴜᴍ",
-			removed:     "✦ ᴘʀᴇᴍɪᴜᴍ ʀᴇᴠᴏᴋᴇᴅ\n◈ ᴜꜱᴇʀ: %1",
-			notPrem:     "⌀ %1 ɪꜱ ɴᴏᴛ ᴘʀᴇᴍɪᴜᴍ",
-			expireSet:   "✦ ᴇxᴘɪʀʏ ᴜᴘᴅᴀᴛᴇᴅ\n◈ ᴜꜱᴇʀ   : %1\n◈ ᴇxᴘɪʀᴇꜱ: %2",
-			listEmpty:   "⌀ ɴᴏ ᴘʀᴇᴍɪᴜᴍ ᴜꜱᴇʀꜱ",
-			cleared:     "✦ ᴄʟᴇᴀʀᴇᴅ %1 ᴘʀᴇᴍɪᴜᴍ ᴜꜱᴇʀ(ꜱ)",
-			checkPrem:   "✦ ᴘʀᴇᴍɪᴜᴍ ᴄʜᴇᴄᴋ\n◈ ᴜꜱᴇʀ  : %1\n◈ ꜱᴛᴀᴛᴜꜱ: %2\n◈ ᴇxᴘɪʀʏ: %3",
-			checkNot:    "⌀ %1 ɪꜱ ɴᴏᴛ ᴘʀᴇᴍɪᴜᴍ"
+			noId:        "⌀ ᴍᴇɴᴛɪᴏɴɴᴇᴢ, ʀᴇ́ᴘᴏɴᴅᴇᴢ ᴏᴜ ꜰᴏᴜʀɴɪꜱꜱᴇᴢ ᴜɴ ᴜɪᴅ ᴠᴀʟɪᴅᴇ",
+			noDays:      "⌀ ᴠᴇᴜɪʟʟᴇᴢ ᴇɴᴛʀᴇʀ ᴜɴ ɴᴏᴍʙʀᴇ ᴅᴇ ᴊᴏᴜʀꜱ ᴠᴀʟɪᴅᴇ",
+			added:       "✦ ᴀᴄᴄᴇ̀ꜱ ᴘʀᴇᴍɪᴜᴍ ᴀᴄᴄᴏʀᴅᴇ́\n◈ ᴜᴛɪʟɪꜱᴀᴛᴇᴜʀ : %1\n◈ ᴇxᴘɪʀᴀᴛɪᴏɴ : %2",
+			alreadyPrem: "⌀ %1 ʙᴇ́ɴᴇ́ꜰɪᴄɪᴇ ᴅᴇ́ᴊᴀ̀ ᴅᴜ ꜱᴛᴀᴛᴜᴛ ᴘʀᴇᴍɪᴜᴍ",
+			removed:     "✦ ᴀᴄᴄᴇ̀ꜱ ᴘʀᴇᴍɪᴜᴍ ʀᴇ́ᴠᴏǫᴜᴇ́\n◈ ᴜᴛɪʟɪꜱᴀᴛᴇᴜʀ : %1",
+			notPrem:     "⌀ %1 ɴ'ᴇꜱᴛ ᴘᴀꜱ ᴘʀᴇᴍɪᴜᴍ",
+			expireSet:   "✦ ᴇxᴘɪʀᴀᴛɪᴏɴ ᴍɪꜱᴇ ᴀ̀ ᴊᴏᴜʀ\n◈ ᴜᴛɪʟɪꜱᴀᴛᴇᴜʀ : %1\n◈ ᴇxᴘɪʀᴇ ʟᴇ    : %2",
+			listEmpty:   "⌀ ᴀᴜᴄᴜɴ ꜱʜɪɴᴏʙɪ ᴘʀᴇᴍɪᴜᴍ ᴇɴʀᴇɢɪꜱᴛʀᴇ́",
+			cleared:     "✦ %1 ᴜᴛɪʟɪꜱᴀᴛᴇᴜʀ(ꜱ) ᴘʀᴇᴍɪᴜᴍ ʀᴇᴛɪʀᴇ́(ꜱ) ᴀᴠᴇᴄ ꜱᴜᴄᴄᴇ̀ꜱ",
+			checkPrem:   "✦ ᴠᴇ́ʀɪꜰɪᴄᴀᴛɪᴏɴ ᴘʀᴇᴍɪᴜᴍ\n◈ ᴜᴛɪʟɪꜱᴀᴛᴇᴜʀ : %1\n◈ ꜱᴛᴀᴛᴜᴛ      : %2\n◈ ᴇxᴘɪʀᴀᴛɪᴏɴ  : %3",
+			checkNot:    "⌀ %1 ɴ'ᴀ ᴘᴀꜱ ᴅ'ᴀᴄᴄᴇ̀ꜱ ᴘʀᴇᴍɪᴜᴍ"
 		}
 	},
 
@@ -65,7 +67,7 @@ module.exports = {
 			cfg.premiumUsers.push(uid);
 			const raw = fs.readJsonSync(CONFIG_FILE);
 			raw.premiumUsers = cfg.premiumUsers;
-			let expStr = "ɴᴇᴠᴇʀ";
+			let expStr = "ᴊᴀᴍᴀɪꜱ";
 			if (days && !isNaN(days) && days > 0) {
 				const expireTime = Date.now() + daysToMs(days);
 				const data = await usersData.get(uid, "data", {});
@@ -102,11 +104,11 @@ module.exports = {
 			const lines = await Promise.all(pList.map(async (uid, i) => {
 				const u = global.db.allUserData.find(u => u.userID == uid);
 				const exp = u?.data?.premiumExpireTime;
-				const expStr = exp ? fmtDate(exp) : "ᴘᴇʀᴍ";
-				const badge = exp && exp < now ? "⚠ ᴇxᴘ" : "✅";
-				return `◦ ${i + 1}. ${u?.name || uid}\n   ᴇxᴘɪʀʏ: ${expStr} ${badge}`;
+				const expStr = exp ? fmtDate(exp) : "ᴘᴇʀᴍᴀɴᴇɴᴛ";
+				const badge = exp && exp < now ? "⚠ ᴇxᴘɪʀᴇ́" : "✅";
+				return `◦ ${i + 1}. ${u?.name || uid}\n   ᴇxᴘɪʀᴀᴛɪᴏɴ : ${expStr} ${badge}`;
 			}));
-			return message.reply("✦ ᴘʀᴇᴍɪᴜᴍ ᴜꜱᴇʀꜱ [" + pList.length + "]:\n" + lines.join("\n"));
+			return message.reply("✦ ᴍᴇᴍʙʀᴇꜱ ᴘʀᴇᴍɪᴜᴍ [" + pList.length + "] :\n" + lines.join("\n"));
 		}
 
 		if (sub === "check") {
@@ -116,8 +118,8 @@ module.exports = {
 			const uRow = global.db.allUserData.find(u => u.userID == uid);
 			const exp = uRow?.data?.premiumExpireTime;
 			const now = Date.now();
-			const status = !exp ? "✅ ᴘᴇʀᴍᴀɴᴇɴᴛ" : exp < now ? "⚠ ᴇxᴘɪʀᴇᴅ" : "✅ ᴀᴄᴛɪᴠᴇ";
-			return message.reply(getLang("checkPrem", uRow?.name || uid, status, exp ? fmtDate(exp) : "ɴᴇᴠᴇʀ"));
+			const status = !exp ? "✅ ᴘᴇʀᴍᴀɴᴇɴᴛ" : exp < now ? "⚠ ᴇxᴘɪʀᴇ́" : "✅ ᴀᴄᴛɪꜰ";
+			return message.reply(getLang("checkPrem", uRow?.name || uid, status, exp ? fmtDate(exp) : "ᴊᴀᴍᴀɪꜱ"));
 		}
 
 		if (sub === "expire") {
