@@ -3,7 +3,7 @@ const os   = require("os");
 const fs   = require("fs-extra");
 const path = require("path");
 
-const DEVELOPER   = "SIFAT";
+const DEVELOPER   = "chris st";
 const BOT_VERSION = "v1.0";
 
 const CYAN    = "#00e5ff";
@@ -421,7 +421,7 @@ module.exports = {
     name: "uptime",
     aliases: ["ut", "status", "ping", "alive"],
     version: "1.0.0",
-    author: "SIFAT",
+    author: "chris st",
     countDown: 5,
     role: 0,
     description: { en: "Advanced system & bot status card" },
