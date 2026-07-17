@@ -41,9 +41,9 @@
   "notes_premiumUsers": "List of user IDs with premium access (role 3)",
   "notes_devUsers": "List of developer IDs with full access (role 4)",
   "whiteListMode": {
-    "enable": true,
+    "enable": false,
     "whiteListIds": [
-      "100087331405932"
+      "61568806302361"
     ],
     "notes": "if you enable this feature, only the ids in the whiteListIds list can use the bot"
   },
